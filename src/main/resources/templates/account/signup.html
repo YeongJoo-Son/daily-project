@@ -14,18 +14,30 @@
 <body class="text-center">
 
 <main class="form-signin w-auto m-auto">
-    <form>
+    <form th:action="@{/account/signup}" th:object="${userCreateForm}" method="post">
         <a th:href="@{/}"><img class="mb-4" th:src="@{/image/mainLogo.png}" alt="" width="150"></a>
         <h1 class="h5 mb-4 fw-normal">회원가입</h1>
 
+        <div class="form-floating" >
+            <input type="text" th:field="*{userid}" class="form-control" id="id" placeholder="ID">
+            <label for="id">ID</label>
+        </div>
+
+        <button class="w-50 mb-3 mt-2 btn btn-sm btn-primary" type="submit">중복 확인</button>
+
         <div class="form-floating">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+            <input type="password" th:field="*{password1}" class="form-control" placeholder="Password">
+            <label for="password1">Password</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input type="password" th:field="*{password2}"class="form-control" placeholder="Password">
+            <label for="password2">비밀번호 확인</label>
         </div>
+        <div class="form-floating" >
+            <input type="email" th:field="*{email}" class="form-control" id="email" placeholder="name@example.com">
+            <label for="email">Email address</label>
+        </div>
+
 
         <button class="w-100 mb-3 mt-2 btn btn-lg btn-outline-primary" type="submit">회원가입</button>
         <div class="caption text-secondary">
